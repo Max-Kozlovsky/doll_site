@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block page_content %}
+<h1 align="middle">Игровые куколки</h1>
+<div class="row p-5 container">
+{% for play_doll in play_dolls %}
+    <div class="col-md-3">
+        <div class="card-mb-2">
+            <p><a href="{% url 'for_game_detail' play_doll.pk %}"> <img class="card-img-top"
+                                                                        src="../{{ play_doll.image }}"
+                  height="420"></a></p>
+            <div class="card-body">
+                <h4 class="card-title">{{ play_doll.name }}</h4>
+                <h5 class="card-text"><b>{{ play_doll.available }}</b></h5>
+                <p class="card-text">{{ play_doll.description }}</p>
+                <h5 class="card-title">{{ play_doll.price }}</h5>
+                <a href="{% url 'for_game_detail' play_doll.pk %}" class="btn btn-primary">Подробнее</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

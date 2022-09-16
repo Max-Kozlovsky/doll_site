@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block page_content %}
+<h1 align="middle">Игрушки</h1>
+<div class="row p-5 container">
+{% for toy in toys %}
+    <div class="col-md-3">
+        <div class="card-mb-2">
+            <p><a href="{% url 'toy_detail' toy.pk %}"> <img class="card-img-top"
+                                                                        src="../{{ toy.image }}" height="420"></a></p>
+            <div class="card-body">
+                <h4 class="card-title">{{ toy.name }}</h4>
+                <h5 class="card-text"><b>{{ toy.available }}</b></h5>
+                <p class="card-text">{{ toy.description }}</p>
+                <h5 class="card-title">{{ toy.price }}</h5>
+                <a href="{% url 'toy_detail' toy.pk %}" class="btn btn-primary">Подробнее</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
